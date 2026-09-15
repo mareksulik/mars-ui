@@ -113,7 +113,7 @@ function createMarsUI(){
     return badge(labels.crit,'crit');
   }
 
-  return { version:'1.0.0', token, status, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
+  return { version:'1.0.1', token, status, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
 }
 
 const MarsUI=createMarsUI();
