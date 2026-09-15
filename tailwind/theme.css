@@ -1,6 +1,6 @@
 @import "../dist/tokens.css";
 
-/* dark variant podľa data-theme (mars-ui default je svetlý) */
+/* dark variant driven by data-theme (mars-ui defaults to light) */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {

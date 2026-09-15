@@ -1,7 +1,7 @@
 {
   "name": "@mareksulik/mars-ui",
-  "version": "1.0.1",
-  "description": "mars-ui — dizajn systém pre reporty, dashboardy a weby. Vizuálne vychádza z Geist (Vercel); fonty Geist Sans/Mono (SIL OFL 1.1). Tokeny, CSS komponenty, vanilla SVG grafy, Tailwind v3/v4 vrstva a React komponenty.",
+  "version": "1.0.2",
+  "description": "mars-ui — design system for reports, dashboards and web apps. Visually derived from Geist (Vercel); Geist Sans/Mono fonts (SIL OFL 1.1). Tokens, CSS components, vanilla SVG charts, Tailwind v3/v4 layer and React components.",
   "license": "MIT",
   "author": "Marek Šulik",
   "repository": {
@@ -17,7 +17,7 @@
     "tokens",
     "DESIGN_SYSTEM.md"
   ],
-  "main": "./dist/ds.js",
+  "main": "./dist/ds.cjs",
   "module": "./dist/ds.esm.js",
   "exports": {
     ".": {

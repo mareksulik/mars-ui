@@ -1,9 +1,9 @@
-/* mars-ui — base: fonty, reset, typografia. Tokeny sú v tokens.css (--mu-*). */
+/* mars-ui — base: fonts, reset, typography. Tokens live in tokens.css (--mu-*). */
 
 /* Geist Sans / Geist Mono — SIL Open Font License 1.1 (dist/fonts/LICENSE-OFL.txt).
-   Self-host: variabilné woff2 vedľa ds.css (fonts/). Ak fonty nechceš self-hostovať, daj do <head>
-   Google Fonts link (tokens.json → fonts.google) a tieto @font-face sa nepoužijú, keďže rovnaký názov
-   už bude načítaný — obidve cesty sú v poriadku. */
+   Self-hosted variable woff2 next to ds.css (fonts/). If you prefer Google Fonts, add the link from
+   tokens.json → fonts.google to <head>; the same family name is then already loaded and these
+   @font-face rules are skipped. Both paths are fine. */
 @font-face{font-family:'Geist';src:url('fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 
@@ -22,7 +22,7 @@ hr{border:0;border-top:1px solid var(--mu-gray-alpha-400);margin:24px 0}
 ::selection{background:var(--mu-blue-200);color:var(--mu-gray-1000)}
 :focus-visible{outline:none;box-shadow:var(--mu-focus-ring);border-radius:var(--mu-radius-sm)}
 
-/* nadpisy: Geist Sans, tesný tracking, farba primary text */
+/* headings: Geist Sans, tight tracking, primary text color */
 h1,h2,h3,h4{font-family:var(--mu-font-sans);color:var(--mu-gray-1000);font-weight:600}
 h1{font-size:32px;line-height:40px;letter-spacing:-0.02em}
 h2{font-size:28px;line-height:36px;letter-spacing:-0.02em;margin-bottom:16px}

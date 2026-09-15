@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:,">
-<title>Prístup</title>
+<title>Access</title>
 <link rel="stylesheet" href="ds.css">
 <style>
 body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
@@ -20,16 +20,16 @@ p{margin:0 auto 24px;color:var(--mu-gray-900);font-size:14px}
 </head>
 <body>
   <div class="card">
-    <!-- logo klienta (inline SVG, fill="currentColor") -->
-    <svg class="logo" viewBox="0 0 120 22" aria-label="Klient"><text x="0" y="17" font-family="Geist, sans-serif" font-weight="600" font-size="18" fill="currentColor">KLIENT</text></svg>
-    <h1>Interný report</h1>
-    <p>Zadaj PIN pre prístup</p>
+    <!-- client logo (inline SVG, fill="currentColor") -->
+    <svg class="logo" viewBox="0 0 120 22" aria-label="Client"><text x="0" y="17" font-family="Geist, sans-serif" font-weight="600" font-size="18" fill="currentColor">CLIENT</text></svg>
+    <h1>Internal report</h1>
+    <p>Enter the PIN to continue</p>
     <form id="f">
       <input id="pin" class="input input-mono" type="password" inputmode="numeric" autocomplete="off" autofocus>
-      <button class="btn btn-primary btn-block" type="submit">Vstúpiť</button>
+      <button class="btn btn-primary btn-block" type="submit">Enter</button>
     </form>
-    <div class="err" id="err">Nesprávny PIN, skús znova.</div>
-    <div class="fine">Obsahuje interné dáta klienta. Neposielať ďalej.</div>
+    <div class="err" id="err">Wrong PIN, try again.</div>
+    <div class="fine">Contains confidential client data. Do not forward.</div>
   </div>
 <script>
 document.getElementById('f').addEventListener('submit', async (e) => {

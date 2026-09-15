@@ -1,4 +1,4 @@
-/* mars-ui tokens — generované z tokens/tokens.json, needitovať ručne. Farby, tiene a radiusy vizuálne vychádzajú z Geist (dizajn systém Vercelu, vercel.com/geist) — hodnoty sú prečítané z verejných CSS premenných 15. 9. 2026. Fonty Geist Sans/Mono: SIL OFL 1.1. mars-ui nie je produkt Vercelu. */
+/* mars-ui tokens — generated from tokens/tokens.json, do not edit by hand. Colors, shadows and radii are visually derived from Geist (Vercel's design system, vercel.com/geist); values were read from its public CSS custom properties on 2026-09-15. Geist Sans/Mono fonts: SIL OFL 1.1. mars-ui is not a Vercel product. */
 :root{
   --mu-gray-100:hsl(0,0%,95%);
   --mu-gray-200:hsl(0,0%,92%);
@@ -224,7 +224,7 @@
   --mu-focus-border:0 0 0 1px #ffffff82, 0px 0px 0px 4px #ffffff3d;
 }
 
-/* mars-ui typografická škála — generované z tokens.json */
+/* mars-ui type scale — generated from tokens.json */
 .heading-72{font-family:var(--mu-font-sans);font-size:72px;line-height:72px;letter-spacing:-0.04em;font-weight:600}
 .heading-72.mono{font-family:var(--mu-font-mono)}
 .heading-64{font-family:var(--mu-font-sans);font-size:64px;line-height:64px;letter-spacing:-0.04em;font-weight:600}
@@ -266,12 +266,12 @@
 
 
 /* ==== src/base.css ==== */
-/* mars-ui — base: fonty, reset, typografia. Tokeny sú v tokens.css (--mu-*). */
+/* mars-ui — base: fonts, reset, typography. Tokens live in tokens.css (--mu-*). */
 
 /* Geist Sans / Geist Mono — SIL Open Font License 1.1 (dist/fonts/LICENSE-OFL.txt).
-   Self-host: variabilné woff2 vedľa ds.css (fonts/). Ak fonty nechceš self-hostovať, daj do <head>
-   Google Fonts link (tokens.json → fonts.google) a tieto @font-face sa nepoužijú, keďže rovnaký názov
-   už bude načítaný — obidve cesty sú v poriadku. */
+   Self-hosted variable woff2 next to ds.css (fonts/). If you prefer Google Fonts, add the link from
+   tokens.json → fonts.google to <head>; the same family name is then already loaded and these
+   @font-face rules are skipped. Both paths are fine. */
 @font-face{font-family:'Geist';src:url('fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 
@@ -290,7 +290,7 @@ hr{border:0;border-top:1px solid var(--mu-gray-alpha-400);margin:24px 0}
 ::selection{background:var(--mu-blue-200);color:var(--mu-gray-1000)}
 :focus-visible{outline:none;box-shadow:var(--mu-focus-ring);border-radius:var(--mu-radius-sm)}
 
-/* nadpisy: Geist Sans, tesný tracking, farba primary text */
+/* headings: Geist Sans, tight tracking, primary text color */
 h1,h2,h3,h4{font-family:var(--mu-font-sans);color:var(--mu-gray-1000);font-weight:600}
 h1{font-size:32px;line-height:40px;letter-spacing:-0.02em}
 h2{font-size:28px;line-height:36px;letter-spacing:-0.02em;margin-bottom:16px}
@@ -323,9 +323,9 @@ section{padding:40px 0;border-bottom:1px solid var(--mu-gray-alpha-400)}
 
 
 /* ==== src/components.css ==== */
-/* mars-ui — komponenty. Názvy tried sú stabilné API (používajú ich šablóny, charts.js aj React vrstva). */
+/* mars-ui — components. Class names are a stable API (used by templates, charts.js and the React layer). */
 
-/* ---- topbar: logo | slash | názov aplikácie ........ meta údaje ---- */
+/* ---- topbar: logo | slash | app name ........ meta row ---- */
 header.topbar,.topbar{background:var(--mu-background-100);border-bottom:1px solid var(--mu-gray-alpha-400)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:56px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;color:var(--mu-gray-1000)}
@@ -422,19 +422,19 @@ textarea.input{height:auto;padding:10px 12px;line-height:20px}
 .note-error{background:var(--mu-red-100);border-color:var(--mu-red-400);color:var(--mu-red-900)}
 .note-ok{background:var(--mu-green-100);border-color:var(--mu-green-400);color:var(--mu-green-900)}
 
-/* ---- SVG grafy (charts.js) ---- */
+/* ---- SVG charts (charts.js) ---- */
 svg text{font-family:var(--mu-font-mono)}
 .chart-empty{padding:28px 0;color:var(--mu-gray-700);font-size:13px}
 
 
 /* ==== src/brand.css ==== */
-/* mars-ui — vrstva klienta. Neutrály (sivá, pozadia, hranice) ostávajú vždy Geist;
-   klient dodáva len akcent a logo. Prepíš v projekte v :root alebo na .brand-<klient>.
+/* mars-ui — brand layer. Neutrals (grays, backgrounds, borders) always stay as they are;
+   a client only supplies an accent and a logo. Override in the project's :root or on .brand-<client>.
 
    :root{ --brand-primary: var(--mu-blue-700); --brand-primary-text: var(--mu-blue-900); --brand-primary-bg: var(--mu-blue-100); }
 
-   Logo: inline SVG s fill="currentColor" v .brand (topbar) — zdedí --mu-gray-1000, v dark režime sa otočí samo.
-   Stavové farby (green / amber / red) sú univerzálne a klient ich NEMENÍ. */
+   Logo: inline SVG with fill="currentColor" inside .brand (topbar) — inherits --mu-gray-1000 and flips in dark mode.
+   Status colors (green / amber / red) are universal and are NOT changed per client. */
 :root{
   --brand-primary:var(--mu-blue-700);
   --brand-primary-text:var(--mu-blue-900);

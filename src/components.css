@@ -1,6 +1,6 @@
-/* mars-ui — komponenty. Názvy tried sú stabilné API (používajú ich šablóny, charts.js aj React vrstva). */
+/* mars-ui — components. Class names are a stable API (used by templates, charts.js and the React layer). */
 
-/* ---- topbar: logo | slash | názov aplikácie ........ meta údaje ---- */
+/* ---- topbar: logo | slash | app name ........ meta row ---- */
 header.topbar,.topbar{background:var(--mu-background-100);border-bottom:1px solid var(--mu-gray-alpha-400)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:56px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px;color:var(--mu-gray-1000)}
@@ -97,6 +97,6 @@ textarea.input{height:auto;padding:10px 12px;line-height:20px}
 .note-error{background:var(--mu-red-100);border-color:var(--mu-red-400);color:var(--mu-red-900)}
 .note-ok{background:var(--mu-green-100);border-color:var(--mu-green-400);color:var(--mu-green-900)}
 
-/* ---- SVG grafy (charts.js) ---- */
+/* ---- SVG charts (charts.js) ---- */
 svg text{font-family:var(--mu-font-mono)}
 .chart-empty{padding:28px 0;color:var(--mu-gray-700);font-size:13px}

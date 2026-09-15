@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 — 2026-09-15
+
+- Chart/badge labels are English by default; `MarsUI.setLabels({...})` overrides them once per page (Fabulo KPI uses Slovak).
+- CommonJS entry `dist/ds.cjs` (package is `type: module`); `require('@mareksulik/mars-ui')` works.
+- English templates (`report.html` shows green / amber / red goal rows), English source comments, repo description and package metadata.
+- Screenshots regenerated.
+
 ## 1.0.1 — 2026-09-15
 
 - README and DESIGN_SYSTEM.md in English, screenshots (light + dark) in `docs/`.

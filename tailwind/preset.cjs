@@ -1,4 +1,4 @@
-// mars-ui Tailwind v3 preset — generované; v app CSS importuj @mareksulik/mars-ui/css alebo dist/tokens.css
+// mars-ui Tailwind v3 preset — generated; import @mareksulik/mars-ui/css or dist/tokens.css in your app CSS
 module.exports = {
   "theme": {
     "extend": {

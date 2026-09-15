@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""mars-ui build: tokens/tokens.json → dist/ (CSS, JS, Tailwind), bez node závislostí.
+"""mars-ui build: tokens/tokens.json → dist/ (CSS, JS, Tailwind), no Node dependencies.
 
     python3 scripts/build.py
 
-Výstupy:
-  dist/tokens.css      :root (svetlý) + [data-theme="dark"] — premenné --mu-*
-  dist/typography.css  triedy .heading-72 … .button-12 zo škály v tokens.json
-  dist/ds.css          tokens + typography + src/base.css + components.css + brand.css (jeden súbor pre reporty)
-  dist/tokens.js       ESM export tokenov (pre React/Node)
-  dist/ds.js           UMD (window.MarsUI) z src/charts.js
-  dist/ds.esm.js       ESM verzia charts.js
-  tailwind/theme.css   Tailwind v4 @theme inline (utility triedy mapované na --mu-*)
-  tailwind/preset.cjs  Tailwind v3 preset (rovnaké mapovanie)
-Kontrola: WCAG kontrast textových krokov (900/1000) na pozadiach 100/200 v oboch režimoch.
+Outputs:
+  dist/tokens.css      :root (light) + [data-theme="dark"] — --mu-* custom properties
+  dist/typography.css  .heading-72 … .button-12 classes from the type scale in tokens.json
+  dist/ds.css          tokens + typography + src/base.css + components.css + brand.css (single file for static pages)
+  dist/tokens.js       ESM export of the tokens (React/Node)
+  dist/ds.js           UMD bundle (window.MarsUI) of src/charts.js
+  dist/ds.esm.js       ESM build of charts.js
+  tailwind/theme.css   Tailwind v4 @theme inline (utilities mapped to --mu-*)
+  tailwind/preset.cjs  Tailwind v3 preset (same mapping)
+Check: WCAG contrast of text steps (900/1000) on backgrounds 100/200 in both modes.
 """
 import json
 import re
@@ -50,13 +50,13 @@ def block(selector: str, mode: str) -> str:
 
 
 tokens_css = (
-    f"/* mars-ui tokens — generované z tokens/tokens.json, needitovať ručne. {T['note']} */\n"
+    f"/* mars-ui tokens — generated from tokens/tokens.json, do not edit by hand. {T['note']} */\n"
     + block(":root", "light") + "\n" + block('[data-theme="dark"]', "dark") + "\n"
 )
 (DIST / "tokens.css").write_text(tokens_css, encoding="utf-8")
 
 # ---------------------------------------------------------------- typography.css
-typo = ["/* mars-ui typografická škála — generované z tokens.json */"]
+typo = ["/* mars-ui type scale — generated from tokens.json */"]
 for name, t in T["typography"].items():
     fam = var("font-sans")
     typo.append(f".{name}{{font-family:var({fam});font-size:{t['size']};line-height:{t['line']};letter-spacing:{t['tracking']};font-weight:{t['weight']}}}")
@@ -71,7 +71,7 @@ for f in ("base.css", "components.css", "brand.css"):
 
 # ---------------------------------------------------------------- tokens.js
 (DIST / "tokens.js").write_text(
-    "// mars-ui tokens — generované z tokens/tokens.json\n"
+    "// mars-ui tokens — generated from tokens/tokens.json\n"
     f"export const tokens = {json.dumps(T, ensure_ascii=False, indent=1)};\n"
     "export const light = tokens.color.light;\nexport const dark = tokens.color.dark;\n"
     "export default tokens;\n", encoding="utf-8")
@@ -82,13 +82,14 @@ umd = ("/* mars-ui charts — UMD. window.MarsUI */\n"
        "(function(root,factory){if(typeof module==='object'&&module.exports){module.exports=factory();}else{root.MarsUI=factory();}})"
        "(typeof self!=='undefined'?self:this,function(){\n" + charts + "\nreturn createMarsUI();\n});\n")
 (DIST / "ds.js").write_text(umd, encoding="utf-8")
+(DIST / "ds.cjs").write_text(umd, encoding="utf-8")  # package.json has type=module → CommonJS consumers need .cjs
 esm = ("/* mars-ui charts — ESM */\n" + charts +
-       "\nconst MarsUI=createMarsUI();\nexport const {token,status,ratioColor,formatters,lineChart,bulletChart,table,badge,yoyChip,paceChip}=MarsUI;\nexport default MarsUI;\n")
+       "\nconst MarsUI=createMarsUI();\nexport const {token,status,labels,setLabels,ratioColor,formatters,lineChart,bulletChart,table,badge,yoyChip,paceChip}=MarsUI;\nexport default MarsUI;\n")
 (DIST / "ds.esm.js").write_text(esm, encoding="utf-8")
 
-# ---------------------------------------------------------------- Tailwind v4 theme (inline → utility triedy čítajú --mu-*, dark funguje cez data-theme)
+# ---------------------------------------------------------------- Tailwind v4 theme (inline → utilities read --mu-*, dark mode via data-theme)
 tw = ['@import "../dist/tokens.css";', "",
-      "/* dark variant podľa data-theme (mars-ui default je svetlý) */",
+      "/* dark variant driven by data-theme (mars-ui defaults to light) */",
       '@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));', "",
       "@theme inline {"]
 for k in T["color"]["light"]:
@@ -117,11 +118,11 @@ preset = {
     "darkMode": ["selector", '[data-theme="dark"]'],
 }
 (ROOT / "tailwind/preset.cjs").write_text(
-    "// mars-ui Tailwind v3 preset — generované; v app CSS importuj @mareksulik/mars-ui/css alebo dist/tokens.css\n"
+    "// mars-ui Tailwind v3 preset — generated; import @mareksulik/mars-ui/css or dist/tokens.css in your app CSS\n"
     f"module.exports = {json.dumps(preset, indent=2)};\n", encoding="utf-8")
 
 
-# ---------------------------------------------------------------- kontrast (WCAG 2.x)
+# ---------------------------------------------------------------- contrast (WCAG 2.x)
 def parse(c: str):
     c = c.strip()
     m = re.match(r"hsl\((\d+),(\d+)%,(\d+)%\)", c)
@@ -161,17 +162,17 @@ for mode in ("light", "dark"):
                 key = f"{scale}-{step}"
                 cr = contrast(col[key], col[bg])
                 if cr < need:
-                    fails.append(f"{mode} {key} na {bg}: {cr:.2f} < {need}")
-    # badge: text 900 na pozadí 100 rovnakej škály
+                    fails.append(f"{mode} {key} on {bg}: {cr:.2f} < {need}")
+    # badge: text 900 on background 100 of the same scale
     for scale in ("blue", "red", "amber", "green", "teal", "purple", "pink"):
         cr = contrast(col[f"{scale}-900"], col[f"{scale}-100"])
         if cr < 4.5:
-            fails.append(f"{mode} badge {scale}-900 na {scale}-100: {cr:.2f} < 4.5")
+            fails.append(f"{mode} badge {scale}-900 on {scale}-100: {cr:.2f} < 4.5")
 
 print(f"dist: tokens.css, typography.css, ds.css ({(DIST / 'ds.css').stat().st_size // 1024} kB), tokens.js, ds.js, ds.esm.js; tailwind/theme.css, preset.cjs")
 if fails:
-    print("Kontrast (WCAG AA) — pozor, nesplnené:")
+    print("Contrast (WCAG AA) — failures:")
     for f in fails:
         print("  ⚠", f)
     sys.exit(0 if "--strict" not in sys.argv else 1)
-print("Kontrast WCAG AA: text 900/1000 a badge 900/100 v oboch režimoch OK")
+print("WCAG AA contrast: text 900/1000 and badge 900/100 OK in both modes")

@@ -1,4 +1,4 @@
-/* mars-ui tokens — generované z tokens/tokens.json, needitovať ručne. Farby, tiene a radiusy vizuálne vychádzajú z Geist (dizajn systém Vercelu, vercel.com/geist) — hodnoty sú prečítané z verejných CSS premenných 15. 9. 2026. Fonty Geist Sans/Mono: SIL OFL 1.1. mars-ui nie je produkt Vercelu. */
+/* mars-ui tokens — generated from tokens/tokens.json, do not edit by hand. Colors, shadows and radii are visually derived from Geist (Vercel's design system, vercel.com/geist); values were read from its public CSS custom properties on 2026-09-15. Geist Sans/Mono fonts: SIL OFL 1.1. mars-ui is not a Vercel product. */
 :root{
   --mu-gray-100:hsl(0,0%,95%);
   --mu-gray-200:hsl(0,0%,92%);
