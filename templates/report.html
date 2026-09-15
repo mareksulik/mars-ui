@@ -34,7 +34,7 @@ if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
 </div></header>
 
 <nav><div class="wrap">
-  <a href="#s1" class="active">Overview</a><a href="#s2">By segment</a><a href="#s3">Recommendations</a>
+  <a href="#s1" class="active">Overview</a><a href="#s2">By segment</a><a href="#s3">Recommendations</a><a href="legend.html" class="right">Legend</a>
 </div></nav>
 
 <section id="s1"><div class="wrap">
@@ -84,5 +84,6 @@ document.getElementById('tbl').innerHTML=UI.table(
   [['A',52000,50000],['B',31000,40000]].map(([n,a,g])=>`<tr><td>${n}</td><td class="num gs">${F.n(a)}</td><td class="num">${F.n(g)}</td><td class="num ${a>=g?'pos':'neg'}">${F.pct(100*a/g)}</td><td class="num gs">12.1 %</td><td>${UI.paceChip(100*a/g,100)}</td></tr>`),
   [{h:'',span:1},{h:'REVENUE',span:3},{h:'EFFICIENCY',span:2}]);
 </script>
+<footer class="site"><span>© 2026 Your company</span><span>Internal report · do not forward</span></footer>
 </body>
 </html>

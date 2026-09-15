@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 — 2026-09-15
+
+- New components: `footer.site`, `nav a.right` (right-aligned tab), methodology-page set (`dl.spec`, `.formula`, `.cell`, `.src`, `figure.shot` with `.cap`, `.metric`, `.band`).
+- Templates: footer and right-aligned tab in `report.html`.
+
 ## 1.0.6 — 2026-09-15
 
 - `ratioColor`: 0.05 % tolerance so a value exactly at the goal/cap (rounding) stays green.

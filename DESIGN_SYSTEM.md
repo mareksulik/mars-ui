@@ -51,6 +51,9 @@ Rules: headings are always Geist Sans, never serif. Numbers compared in a column
 - **Input** `.input(.input-mono)`, `.field > label + .input + .hint/.error`.
 - **Legend** `.legend > span > .sw` (+ `.sw-dashed` last year, `.sw-dotted` path to goal, `.sw-goal` goal).
 - **Note** `.note(.note-warn|.note-error|.note-ok)`.
+- **Footer** `footer.site` — copyright left, note right, 13 px gray-900.
+- **Tabs, right-aligned item** `nav a.right` (e.g. a "Legend" link).
+- **Methodology page** (legend / definitions for clients): `dl.spec` (mono term · description), `.formula` (mono block), `.cell` (spreadsheet cell reference pill, e.g. AG5), `.src` (API field name), `figure.shot > img + .cap` (annotated screenshot with caption), `.metric` (definition card), `.band` (color swatch).
 
 ## 5. Charts (`dist/ds.js` → `MarsUI`)
 
