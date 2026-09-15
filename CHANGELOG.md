@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 — 2026-09-15
+
+- New `orange` scale (100–1000, light + dark). Status band "within 10 %" is `orange-800` instead of the brown `amber-900`; warm text uses `orange-900`.
+
 ## 1.0.2 — 2026-09-15
 
 - Chart/badge labels are English by default; `MarsUI.setLabels({...})` overrides them once per page (Fabulo KPI uses Slovak).

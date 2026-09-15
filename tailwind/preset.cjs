@@ -99,6 +99,18 @@ module.exports = {
           "900": "var(--mu-pink-900)",
           "1000": "var(--mu-pink-1000)"
         },
+        "orange": {
+          "100": "var(--mu-orange-100)",
+          "200": "var(--mu-orange-200)",
+          "300": "var(--mu-orange-300)",
+          "400": "var(--mu-orange-400)",
+          "500": "var(--mu-orange-500)",
+          "600": "var(--mu-orange-600)",
+          "700": "var(--mu-orange-700)",
+          "800": "var(--mu-orange-800)",
+          "900": "var(--mu-orange-900)",
+          "1000": "var(--mu-orange-1000)"
+        },
         "gray-alpha": {
           "100": "var(--mu-gray-alpha-100)",
           "200": "var(--mu-gray-alpha-200)",

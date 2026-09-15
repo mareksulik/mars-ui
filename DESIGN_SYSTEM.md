@@ -25,7 +25,7 @@ Start from `templates/report.html` (topbar + tabs + sections + chart examples) a
 |---|---|---|
 | backgrounds | `--mu-background-100` (cards, topbar), `--mu-background-200` (page) | 100 = surface, 200 = canvas |
 | gray | `--mu-gray-100…1000`, `--mu-gray-alpha-100…1000` | 100–300 component backgrounds (default/hover/active), 400–600 borders (`gray-alpha-400` = the standard 1 px border), 700–800 high-contrast fills and chart axes, 900 secondary text, 1000 primary text |
-| accents | `blue`, `red`, `amber`, `green`, `teal`, `purple`, `pink` × 100–1000 | 100 badge background, 700–800 lines/bars/buttons, 900 badge text and colored numbers |
+| accents | `blue`, `red`, `amber`, `orange`, `green`, `teal`, `purple`, `pink` × 100–1000 | 100 badge background, 700–800 lines/bars/buttons, 900 badge text and colored numbers. `orange` is a mars-ui addition (Geist has none): use it where `amber-900` would read as brown on bars or big numbers |
 | effects | `--mu-shadow-small/medium/large/tooltip/menu/modal`, `--mu-focus-ring` | shadows only on floating elements (menus, modals); cards have none |
 | radius | `--mu-radius-sm` 6 px (buttons, inputs, text badges), `--mu-radius-md` 12 px (cards, tables), `--mu-radius-lg` 16 px, `--mu-radius-full` (pills) | |
 | fonts | `--mu-font-sans` Geist, `--mu-font-mono` Geist Mono | mono = numbers in tables, chart axes, meta rows, badges, code |
@@ -57,8 +57,8 @@ Rules: headings are always Geist Sans, never serif. Numbers compared in a column
 - `lineChart(el, labels, series, opts)` — series `{label,color,values,dash,opacity,width,nodots}`; `opts.goal` draws a black dashed goal line, `opts.yfmt/tfmt` formatters, `opts.xstep`, `opts.wide`. The left margin adapts to the widest axis label.
 - Conventions: **this year solid**, **last year same color dashed `5 4` at opacity .55** (.35 in multi-entity comparisons), **monthly goal black dashed**, **linear path to goal gray dotted `2 4`** (gray-600, width 1). Company-wide series = `blue-700`. Grid `gray-200`, axes `gray-700`.
 - `bulletChart(el, rows, {progress})` — each row: label + value on the left, bar to goal (100 % = vertical black line), big percentage and projection in the middle, target on the right; `progress` draws "TODAY x %".
-- Status colors (`ratioColor`): met `green-800`, within 3 % `amber-800`, within 10 % `amber-900`, beyond `red-800`; no data `gray-700`.
-- Series palette for several entities: amber-800, teal-700, purple-700, red-700, blue-700, pink-700 (text = step 900).
+- Status colors (`ratioColor`): met `green-800`, within 3 % `amber-800` (yellow-orange), within 10 % `orange-800` (orange), beyond `red-800`; no data `gray-700`. Never use `amber-900` on bars or big numbers — it is brown; it is only for badge text on `amber-100`.
+- Series palette for several entities: amber-800, teal-700, purple-700, red-700, blue-700, pink-700 (text = step 900; for amber use `orange-900` as text, not the brown `amber-900`).
 
 ## 6. Brand layer
 

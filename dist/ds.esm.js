@@ -5,9 +5,9 @@
 function createMarsUI(){
   const FALLBACK={ 'gray-100':'#f2f2f2','gray-200':'#ebebeb','gray-600':'#a8a8a8','gray-700':'#8f8f8f','gray-900':'#4d4d4d','gray-1000':'#171717',
     'blue-700':'#0070f3','blue-900':'#0068d6','green-800':'#398e4a','green-900':'#297a3a','amber-800':'#ff990a','amber-900':'#a35200',
-    'red-700':'#e5484d','red-800':'#da3036','red-900':'#cb2a30','teal-700':'#12a594','teal-900':'#067a6e','purple-700':'#8e4ec6','purple-900':'#7820bc','background-100':'#ffffff' };
+    'orange-800':'#ff5500','orange-900':'#bd460f','red-700':'#e5484d','red-800':'#da3036','red-900':'#cb2a30','teal-700':'#12a594','teal-900':'#067a6e','purple-700':'#8e4ec6','purple-900':'#7820bc','background-100':'#ffffff' };
   const token=(name)=>{ try{ const v=getComputedStyle(document.documentElement).getPropertyValue('--mu-'+name).trim(); if(v) return v; }catch(e){} return FALLBACK[name]||'#8f8f8f'; };
-  const status={ ok:()=>token('green-800'), warn3:()=>token('amber-800'), warn10:()=>token('amber-900'), crit:()=>token('red-800'), muted:()=>token('gray-700') };
+  const status={ ok:()=>token('green-800'), warn3:()=>token('amber-800'), warn10:()=>token('orange-800'), crit:()=>token('red-800'), muted:()=>token('gray-700') };
   /** UI labels — English by default; override once per page: MarsUI.setLabels({goal:'cieľ', goal100:'CIEĽ 100 %', …}). */
   const LBL={ goal:'goal', goal100:'TARGET 100 %', today:'TODAY', noData:'No data.', empty:'no data yet',
     pace:{none:'no data',ok:'on track',warn:'slightly behind',crit:'behind'}, yoy:'YoY', yoyNone:'no' };
@@ -117,7 +117,7 @@ function createMarsUI(){
     return badge(labels.crit,'crit');
   }
 
-  return { version:'1.0.2', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
+  return { version:'1.0.3', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
 }
 
 const MarsUI=createMarsUI();
