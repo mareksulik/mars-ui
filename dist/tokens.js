@@ -101,6 +101,16 @@ export const tokens = {
    "orange-800": "hsl(20,100%,50%)",
    "orange-900": "hsl(18,85%,40%)",
    "orange-1000": "hsl(18,70%,16%)",
+   "lime-100": "hsl(66,80%,95%)",
+   "lime-200": "hsl(66,80%,92%)",
+   "lime-300": "hsl(66,75%,86%)",
+   "lime-400": "hsl(66,70%,76%)",
+   "lime-500": "hsl(66,65%,62%)",
+   "lime-600": "hsl(66,65%,50%)",
+   "lime-700": "hsl(66,70%,44%)",
+   "lime-800": "hsl(66,70%,39%)",
+   "lime-900": "hsl(66,80%,26%)",
+   "lime-1000": "hsl(66,60%,12%)",
    "gray-alpha-100": "#0000000d",
    "gray-alpha-200": "#00000014",
    "gray-alpha-300": "#0000001a",
@@ -205,6 +215,16 @@ export const tokens = {
    "orange-800": "hsl(20,100%,50%)",
    "orange-900": "hsl(24,100%,66%)",
    "orange-1000": "hsl(28,100%,94%)",
+   "lime-100": "hsl(66,50%,9%)",
+   "lime-200": "hsl(66,50%,12%)",
+   "lime-300": "hsl(66,55%,15%)",
+   "lime-400": "hsl(66,60%,18%)",
+   "lime-500": "hsl(66,65%,24%)",
+   "lime-600": "hsl(66,70%,34%)",
+   "lime-700": "hsl(66,70%,44%)",
+   "lime-800": "hsl(66,70%,45%)",
+   "lime-900": "hsl(66,70%,60%)",
+   "lime-1000": "hsl(66,80%,92%)",
    "gray-alpha-100": "#ffffff0f",
    "gray-alpha-200": "#ffffff17",
    "gray-alpha-300": "#ffffff21",
@@ -384,7 +404,7 @@ export const tokens = {
   "status": {
    "ok": "green-800",
    "ok-text": "green-900",
-   "warn-3": "amber-800",
+   "warn-3": "lime-800",
    "warn-10": "orange-800",
    "crit": "red-800",
    "crit-text": "red-900",
@@ -414,7 +434,8 @@ export const tokens = {
     "line": "red-700",
     "text": "red-900"
    }
-  }
+  },
+  "status_rule": "FIXED RULE (Marek, 2026-09-09; restored 2026-09-15): met = green-800 · within 3 % = lime-800 (yellow-green, still a shade of green) · within 10 % = orange-800 · beyond 10 % = red-800. Do not change bands or colors without an explicit decision."
  }
 };
 export const light = tokens.color.light;

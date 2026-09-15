@@ -1,6 +1,6 @@
 {
   "name": "@mareksulik/mars-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "mars-ui — design system for reports, dashboards and web apps. Visually derived from Geist (Vercel); Geist Sans/Mono fonts (SIL OFL 1.1). Tokens, CSS components, vanilla SVG charts, Tailwind v3/v4 layer and React components.",
   "license": "MIT",
   "author": "Marek Šulik",

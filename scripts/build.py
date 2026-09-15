@@ -157,14 +157,14 @@ fails = []
 for mode in ("light", "dark"):
     col = T["color"][mode]
     for bg in ("background-100", "background-200"):
-        for scale in ("gray", "blue", "red", "amber", "orange", "green", "teal", "purple", "pink"):
+        for scale in ("gray", "blue", "red", "amber", "orange", "lime", "green", "teal", "purple", "pink"):
             for step, need in (("1000", 7.0), ("900", 4.5)):
                 key = f"{scale}-{step}"
                 cr = contrast(col[key], col[bg])
                 if cr < need:
                     fails.append(f"{mode} {key} on {bg}: {cr:.2f} < {need}")
     # badge: text 900 on background 100 of the same scale
-    for scale in ("blue", "red", "amber", "orange", "green", "teal", "purple", "pink"):
+    for scale in ("blue", "red", "amber", "orange", "lime", "green", "teal", "purple", "pink"):
         cr = contrast(col[f"{scale}-900"], col[f"{scale}-100"])
         if cr < 4.5:
             fails.append(f"{mode} badge {scale}-900 on {scale}-100: {cr:.2f} < 4.5")

@@ -111,6 +111,18 @@ module.exports = {
           "900": "var(--mu-orange-900)",
           "1000": "var(--mu-orange-1000)"
         },
+        "lime": {
+          "100": "var(--mu-lime-100)",
+          "200": "var(--mu-lime-200)",
+          "300": "var(--mu-lime-300)",
+          "400": "var(--mu-lime-400)",
+          "500": "var(--mu-lime-500)",
+          "600": "var(--mu-lime-600)",
+          "700": "var(--mu-lime-700)",
+          "800": "var(--mu-lime-800)",
+          "900": "var(--mu-lime-900)",
+          "1000": "var(--mu-lime-1000)"
+        },
         "gray-alpha": {
           "100": "var(--mu-gray-alpha-100)",
           "200": "var(--mu-gray-alpha-200)",

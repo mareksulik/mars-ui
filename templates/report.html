@@ -62,10 +62,11 @@ if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
 <script>
 // API sample — replace with your data (fetch('data/….json'))
 const UI=window.MarsUI, F=UI.formatters('en-US');
-// three goal rows: green = met, orange = within 3 %, red = more than 10 % off
+// four goal rows = the fixed status bands: green = met, lime = within 3 %, orange = within 10 %, red = beyond 10 %
 UI.bulletChart(document.getElementById('bullets'),[
   {label:'REVENUE · EX VAT',val:F.eur(1234567),pct:41.2,ppct:103,big:F.pct(41.2),sub:'projection '+F.eur(3090000)+' ('+F.pct(103)+')',right:'GOAL',rightVal:F.eur(3000000),color:UI.ratioColor(1.03)},
   {label:'PROFIT · ALL ORDERS',val:F.eur(412300),pct:42.5,ppct:98,big:F.pct(42.5),sub:'projection '+F.eur(951000)+' ('+F.pct(98)+')',right:'GOAL',rightVal:F.eur(970000),color:UI.ratioColor(0.98)},
+  {label:'ORDERS',val:F.n(8910),pct:40.5,ppct:93,big:F.pct(40.5),sub:'projection '+F.n(20460)+' ('+F.pct(93)+')',right:'GOAL',rightVal:F.n(22000),color:UI.ratioColor(0.93)},
   {label:'AD SPEND / REVENUE',val:F.pct(12.8),pct:112,ppct:110,big:F.pct(112),sub:'projection 12.6 %',right:'GOAL · LOWER = BETTER',rightVal:F.pct(11.4),color:UI.ratioColor(1.12,true)},
 ],{progress:43.3});
 const days=Array.from({length:30},(_,i)=>i+1);
