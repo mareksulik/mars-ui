@@ -1,0 +1,54 @@
+/* mars-ui — base: fonty, reset, typografia. Tokeny sú v tokens.css (--mu-*). */
+
+/* Geist Sans / Geist Mono — SIL Open Font License 1.1 (dist/fonts/LICENSE-OFL.txt).
+   Self-host: variabilné woff2 vedľa ds.css (fonts/). Ak fonty nechceš self-hostovať, daj do <head>
+   Google Fonts link (tokens.json → fonts.google) a tieto @font-face sa nepoužijú, keďže rovnaký názov
+   už bude načítaný — obidve cesty sú v poriadku. */
+@font-face{font-family:'Geist';src:url('fonts/Geist-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('fonts/GeistMono-Variable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{color-scheme:light;-webkit-text-size-adjust:100%}
+[data-theme="dark"]{color-scheme:dark}
+body{background:var(--mu-background-200);color:var(--mu-gray-900);font-family:var(--mu-font-sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+img,svg,video{display:block;max-width:100%}
+a{color:var(--mu-blue-900);text-decoration:none}
+a:hover{text-decoration:underline}
+strong,b{font-weight:600;color:var(--mu-gray-1000)}
+code,kbd,pre,.mono{font-family:var(--mu-font-mono)}
+kbd{display:inline-block;padding:0 6px;font-size:12px;line-height:20px;border:1px solid var(--mu-gray-alpha-400);border-bottom-width:2px;border-radius:var(--mu-radius-sm);background:var(--mu-background-100);color:var(--mu-gray-1000)}
+hr{border:0;border-top:1px solid var(--mu-gray-alpha-400);margin:24px 0}
+::selection{background:var(--mu-blue-200);color:var(--mu-gray-1000)}
+:focus-visible{outline:none;box-shadow:var(--mu-focus-ring);border-radius:var(--mu-radius-sm)}
+
+/* nadpisy: Geist Sans, tesný tracking, farba primary text */
+h1,h2,h3,h4{font-family:var(--mu-font-sans);color:var(--mu-gray-1000);font-weight:600}
+h1{font-size:32px;line-height:40px;letter-spacing:-0.02em}
+h2{font-size:28px;line-height:36px;letter-spacing:-0.02em;margin-bottom:16px}
+h3{font-size:22px;line-height:30px;letter-spacing:-0.02em;margin:36px 0 12px}
+h4{font-size:16px;line-height:24px;letter-spacing:-0.01em;margin-bottom:8px}
+p{margin-bottom:12px;max-width:820px}
+.text-primary{color:var(--mu-gray-1000)}
+.text-secondary{color:var(--mu-gray-900)}
+.text-muted{color:var(--mu-gray-700)}
+.pos{color:var(--mu-green-900);font-weight:500}
+.neg{color:var(--mu-red-900);font-weight:500}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* layout */
+.wrap{max-width:1480px;margin:0 auto;padding:0 24px}
+.wrap-narrow{max-width:960px;margin:0 auto;padding:0 24px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.grid2 .full,.grid3 .full{grid-column:1/-1}
+@media(max-width:880px){.grid2,.grid3{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--mu-gray-alpha-400)}
+.sec-num{font-family:var(--mu-font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu-gray-900);margin-bottom:8px}
+
+@media print{
+  body{background:#fff}
+  nav,.no-print{display:none!important}
+  section{break-inside:avoid;padding:20px 0}
+  figure,.card,.tbl-scroll{break-inside:avoid;border-color:#ddd}
+}

@@ -1,0 +1,19 @@
+/* mars-ui — vrstva klienta. Neutrály (sivá, pozadia, hranice) ostávajú vždy Geist;
+   klient dodáva len akcent a logo. Prepíš v projekte v :root alebo na .brand-<klient>.
+
+   :root{ --brand-primary: var(--mu-blue-700); --brand-primary-text: var(--mu-blue-900); --brand-primary-bg: var(--mu-blue-100); }
+
+   Logo: inline SVG s fill="currentColor" v .brand (topbar) — zdedí --mu-gray-1000, v dark režime sa otočí samo.
+   Stavové farby (green / amber / red) sú univerzálne a klient ich NEMENÍ. */
+:root{
+  --brand-primary:var(--mu-blue-700);
+  --brand-primary-text:var(--mu-blue-900);
+  --brand-primary-bg:var(--mu-blue-100);
+  --brand-secondary:var(--mu-teal-700);
+}
+.brand-accent{color:var(--brand-primary-text)}
+.bg-brand{background:var(--brand-primary-bg)}
+.btn-brand{background:var(--brand-primary);border-color:var(--brand-primary);color:#fff}
+.btn-brand:hover{filter:brightness(.92)}
+.chip-brand{background:var(--brand-primary-bg);color:var(--brand-primary-text)}
+a.brand-link{color:var(--brand-primary-text)}

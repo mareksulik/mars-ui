@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<!-- PIN ochrana (voliteľné): api/check + auth.html podľa mars-ui/templates/auth.html; middleware.js chráni aj dáta -->
+<script>
+if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
+  fetch('/api/check').then(r => r.ok ? r.json() : Promise.reject()).then(d => { if (!d.ok) location.href = '/auth.html'; }).catch(() => { location.href = '/auth.html'; });
+}
+</script>
+<title>Názov reportu</title>
+<!-- mars-ui: vendorované súbory (cp node_modules/@mareksulik/mars-ui/dist/{ds.css,ds.js,fonts} .) alebo CDN:
+     https://cdn.jsdelivr.net/npm/@mareksulik/mars-ui@1/dist/ds.css -->
+<link rel="stylesheet" href="ds.css">
+<script src="ds.js"></script>
+<style>
+/* projektové prepisy: len brand a drobnosti — tokeny a komponenty nechaj v ds.css */
+:root{ --brand-primary: var(--mu-blue-700); }
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <div class="brand">
+    <!-- logo klienta: inline SVG s fill="currentColor", výška ~22 px -->
+    <svg viewBox="0 0 120 22" height="22" aria-label="Klient"><text x="0" y="17" font-family="Geist, sans-serif" font-weight="600" font-size="18" fill="currentColor">KLIENT</text></svg>
+    <span class="slash"></span><span class="app">Report</span>
+    <h1 class="sr-only">Klient — Report</h1>
+  </div>
+  <div class="meta-row"><span id="meta-period">OBDOBIE</span><span>VŠETKO V EUR</span><span id="meta-updated">AKTUALIZOVANÉ: —</span></div>
+</div></header>
+
+<nav><div class="wrap">
+  <a href="#s1" class="active">Prehľad</a><a href="#s2">Detail</a><a href="#s3">Odporúčania</a>
+</div></nav>
+
+<section id="s1"><div class="wrap">
+  <div class="sec-num">01 — Prehľad</div>
+  <h2>Cieľ vs. skutočnosť</h2>
+  <div class="grid3">
+    <div class="card"><div class="stat"><div class="label">Tržby</div><div class="value">1 234 567 €</div><div class="delta pos">+4,2 % YoY</div></div></div>
+    <div class="card"><div class="stat"><div class="label">PNO</div><div class="value">12,8 %</div><div class="delta neg">+0,6 p. b.</div></div></div>
+    <div class="card"><div class="stat"><div class="label">Objednávky</div><div class="value">8 910</div><div class="delta">—</div></div></div>
+  </div>
+  <figure><div id="bullets"></div></figure>
+  <div class="grid2">
+    <figure><figcaption>Vývoj <span class="chip chip-ok">YoY +4,2 %</span></figcaption><div class="fig-sub">tis. € · plná = tento rok · čiarkovaná = vlani</div><div id="ch-1"></div></figure>
+    <figure><figcaption>Po segmentoch</figcaption><div class="fig-sub">tis. €</div><div id="ch-2"></div></figure>
+  </div>
+  <div class="legend" id="legend"></div>
+</div></section>
+
+<section id="s2"><div class="wrap">
+  <div class="sec-num">02 — Detail</div>
+  <h2>Tabuľka</h2>
+  <div id="tbl"></div>
+</div></section>
+
+<script>
+// Ukážka API — nahraď vlastnými dátami (fetch('data/…json'))
+const UI=window.MarsUI, F=UI.formatters('sk-SK');
+UI.bulletChart(document.getElementById('bullets'),[
+  {label:'TRŽBY',val:F.eur(1234567),pct:41,ppct:98,big:F.pct(41),sub:'projekcia '+F.eur(2950000)+' ('+F.pct(98)+')',right:'CIEĽ',rightVal:F.eur(3000000),color:UI.ratioColor(0.98)},
+  {label:'PNO',val:F.pct(12.8),pct:104,ppct:102,big:F.pct(104),sub:'projekcia 12,5 %',right:'CIEĽ · NIŽŠIE = LEPŠIE',rightVal:F.pct(12.3),color:UI.ratioColor(1.04,true)},
+],{progress:43.3});
+const days=Array.from({length:30},(_,i)=>i+1);
+UI.lineChart(document.getElementById('ch-1'),days,[
+  {label:'2025',color:UI.token('blue-700'),values:days.map(d=>d*3000),dash:'5 4',opacity:.55,nodots:true},
+  {label:'2026',color:UI.token('blue-700'),values:days.slice(0,13).map(d=>d*3200)},
+],{xstep:5,goal:95000,yfmt:F.k,tfmt:F.eur});
+UI.lineChart(document.getElementById('ch-2'),days,[
+  {label:'A',color:UI.token('teal-700'),values:days.slice(0,13).map(d=>d*1500)},
+  {label:'B',color:UI.token('purple-700'),values:days.slice(0,13).map(d=>d*1100)},
+],{xstep:5,yfmt:F.k,tfmt:F.eur});
+document.getElementById('legend').innerHTML=`<span><span class="sw" style="background:${UI.token('teal-700')}"></span>Segment A</span><span><span class="sw" style="background:${UI.token('purple-700')}"></span>Segment B</span><span><span class="sw sw-dashed"></span>vlani</span><span><span class="sw sw-goal"></span>cieľ</span>`;
+document.getElementById('tbl').innerHTML=UI.table(
+  [{h:'Segment'},{h:'Skutočnosť €',num:1,gs:1},{h:'Cieľ €',num:1},{h:'Plnenie',num:1},{h:'PNO',num:1,gs:1},{h:'Stav'}],
+  [['A',52000,50000,'ok'],['B',31000,40000,'crit']].map(([n,a,g,t])=>`<tr><td>${n}</td><td class="num gs">${F.n(a)}</td><td class="num">${F.n(g)}</td><td class="num ${a>=g?'pos':'neg'}">${F.pct(100*a/g)}</td><td class="num gs">12,1 %</td><td>${UI.paceChip(100*a/g,100)}</td></tr>`),
+  [{h:'',span:1},{h:'TRŽBY',span:3},{h:'EFEKTIVITA',span:2}]);
+</script>
+</body>
+</html>

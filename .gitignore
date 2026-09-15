@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+*.tgz
+# lokálny preview šablón (kópie z dist/)
+templates/ds.css
+templates/ds.js
+templates/fonts/

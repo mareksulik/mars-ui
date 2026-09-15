@@ -1,0 +1,402 @@
+// mars-ui tokens — generované z tokens/tokens.json
+export const tokens = {
+ "$schema": "mars-ui tokens v1",
+ "name": "mars-ui",
+ "prefix": "mu",
+ "note": "Farby, tiene a radiusy vizuálne vychádzajú z Geist (dizajn systém Vercelu, vercel.com/geist) — hodnoty sú prečítané z verejných CSS premenných 15. 9. 2026. Fonty Geist Sans/Mono: SIL OFL 1.1. mars-ui nie je produkt Vercelu.",
+ "fonts": {
+  "sans": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  "mono": "'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+  "google": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+ },
+ "color": {
+  "light": {
+   "gray-100": "hsl(0,0%,95%)",
+   "gray-200": "hsl(0,0%,92%)",
+   "gray-300": "hsl(0,0%,90%)",
+   "gray-400": "hsl(0,0%,92%)",
+   "gray-500": "hsl(0,0%,79%)",
+   "gray-600": "hsl(0,0%,66%)",
+   "gray-700": "hsl(0,0%,56%)",
+   "gray-800": "hsl(0,0%,49%)",
+   "gray-900": "hsl(0,0%,30%)",
+   "gray-1000": "hsl(0,0%,9%)",
+   "blue-100": "hsl(212,100%,97%)",
+   "blue-200": "hsl(210,100%,96%)",
+   "blue-300": "hsl(210,100%,94%)",
+   "blue-400": "hsl(209,100%,90%)",
+   "blue-500": "hsl(209,100%,80%)",
+   "blue-600": "hsl(208,100%,66%)",
+   "blue-700": "hsl(212,100%,48%)",
+   "blue-800": "hsl(212,100%,41%)",
+   "blue-900": "hsl(211,100%,42%)",
+   "blue-1000": "hsl(211,100%,15%)",
+   "red-100": "hsl(0,100%,97%)",
+   "red-200": "hsl(0,100%,96%)",
+   "red-300": "hsl(0,100%,95%)",
+   "red-400": "hsl(0,90%,92%)",
+   "red-500": "hsl(0,82%,85%)",
+   "red-600": "hsl(359,90%,71%)",
+   "red-700": "hsl(358,75%,59%)",
+   "red-800": "hsl(358,70%,52%)",
+   "red-900": "hsl(358,66%,48%)",
+   "red-1000": "hsl(355,49%,15%)",
+   "amber-100": "hsl(39,100%,95%)",
+   "amber-200": "hsl(44,100%,92%)",
+   "amber-300": "hsl(43,96%,90%)",
+   "amber-400": "hsl(42,100%,78%)",
+   "amber-500": "hsl(38,100%,71%)",
+   "amber-600": "hsl(36,90%,62%)",
+   "amber-700": "hsl(39,100%,57%)",
+   "amber-800": "hsl(35,100%,52%)",
+   "amber-900": "hsl(30,100%,32%)",
+   "amber-1000": "hsl(20,79%,17%)",
+   "green-100": "hsl(120,60%,96%)",
+   "green-200": "hsl(120,60%,95%)",
+   "green-300": "hsl(120,60%,91%)",
+   "green-400": "hsl(122,60%,86%)",
+   "green-500": "hsl(124,60%,75%)",
+   "green-600": "hsl(125,60%,64%)",
+   "green-700": "hsl(131,41%,46%)",
+   "green-800": "hsl(132,43%,39%)",
+   "green-900": "hsl(133,50%,32%)",
+   "green-1000": "hsl(128,29%,15%)",
+   "teal-100": "hsl(169,70%,96%)",
+   "teal-200": "hsl(167,70%,94%)",
+   "teal-300": "hsl(168,70%,90%)",
+   "teal-400": "hsl(170,70%,85%)",
+   "teal-500": "hsl(170,70%,72%)",
+   "teal-600": "hsl(170,70%,57%)",
+   "teal-700": "hsl(173,80%,36%)",
+   "teal-800": "hsl(173,83%,30%)",
+   "teal-900": "hsl(174,91%,25%)",
+   "teal-1000": "hsl(171,80%,13%)",
+   "purple-100": "hsl(276,100%,97%)",
+   "purple-200": "hsl(277,87%,97%)",
+   "purple-300": "hsl(274,78%,95%)",
+   "purple-400": "hsl(276,71%,92%)",
+   "purple-500": "hsl(274,70%,82%)",
+   "purple-600": "hsl(273,72%,73%)",
+   "purple-700": "hsl(272,51%,54%)",
+   "purple-800": "hsl(272,47%,45%)",
+   "purple-900": "hsl(274,71%,43%)",
+   "purple-1000": "hsl(276,100%,15%)",
+   "pink-100": "hsl(330,100%,96%)",
+   "pink-200": "hsl(340,90%,96%)",
+   "pink-300": "hsl(340,82%,94%)",
+   "pink-400": "hsl(341,76%,91%)",
+   "pink-500": "hsl(340,75%,84%)",
+   "pink-600": "hsl(341,75%,73%)",
+   "pink-700": "hsl(336,80%,58%)",
+   "pink-800": "hsl(336,74%,51%)",
+   "pink-900": "hsl(336,65%,45%)",
+   "pink-1000": "hsl(333,74%,15%)",
+   "gray-alpha-100": "#0000000d",
+   "gray-alpha-200": "#00000014",
+   "gray-alpha-300": "#0000001a",
+   "gray-alpha-400": "#00000014",
+   "gray-alpha-500": "#00000036",
+   "gray-alpha-600": "#00000057",
+   "gray-alpha-700": "#00000070",
+   "gray-alpha-800": "#00000082",
+   "gray-alpha-900": "#000000b3",
+   "gray-alpha-1000": "#000000e8",
+   "background-100": "hsl(0,0%,100%)",
+   "background-200": "hsl(0,0%,98%)"
+  },
+  "dark": {
+   "gray-100": "hsl(0,0%,10%)",
+   "gray-200": "hsl(0,0%,12%)",
+   "gray-300": "hsl(0,0%,16%)",
+   "gray-400": "hsl(0,0%,18%)",
+   "gray-500": "hsl(0,0%,27%)",
+   "gray-600": "hsl(0,0%,53%)",
+   "gray-700": "hsl(0,0%,56%)",
+   "gray-800": "hsl(0,0%,49%)",
+   "gray-900": "hsl(0,0%,63%)",
+   "gray-1000": "hsl(0,0%,93%)",
+   "blue-100": "hsl(216,50%,12%)",
+   "blue-200": "hsl(214,59%,15%)",
+   "blue-300": "hsl(213,71%,20%)",
+   "blue-400": "hsl(212,78%,23%)",
+   "blue-500": "hsl(211,86%,27%)",
+   "blue-600": "hsl(206,100%,50%)",
+   "blue-700": "hsl(212,100%,48%)",
+   "blue-800": "hsl(212,100%,41%)",
+   "blue-900": "hsl(210,100%,66%)",
+   "blue-1000": "hsl(206,100%,96%)",
+   "red-100": "hsl(357,37%,12%)",
+   "red-200": "hsl(357,46%,16%)",
+   "red-300": "hsl(356,54%,22%)",
+   "red-400": "hsl(357,55%,26%)",
+   "red-500": "hsl(357,60%,32%)",
+   "red-600": "hsl(358,75%,59%)",
+   "red-700": "hsl(358,75%,59%)",
+   "red-800": "hsl(358,69%,52%)",
+   "red-900": "hsl(358,100%,69%)",
+   "red-1000": "hsl(353,90%,96%)",
+   "amber-100": "hsl(35,100%,8%)",
+   "amber-200": "hsl(32,100%,10%)",
+   "amber-300": "hsl(33,100%,15%)",
+   "amber-400": "hsl(35,100%,17%)",
+   "amber-500": "hsl(35,91%,22%)",
+   "amber-600": "hsl(39,85%,49%)",
+   "amber-700": "hsl(39,100%,57%)",
+   "amber-800": "hsl(35,100%,52%)",
+   "amber-900": "hsl(39,90%,50%)",
+   "amber-1000": "hsl(40,94%,93%)",
+   "green-100": "hsl(136,50%,9%)",
+   "green-200": "hsl(137,50%,12%)",
+   "green-300": "hsl(136,50%,14%)",
+   "green-400": "hsl(135,70%,16%)",
+   "green-500": "hsl(135,70%,23%)",
+   "green-600": "hsl(135,70%,34%)",
+   "green-700": "hsl(131,41%,46%)",
+   "green-800": "hsl(132,43%,39%)",
+   "green-900": "hsl(131,43%,57%)",
+   "green-1000": "hsl(136,73%,94%)",
+   "teal-100": "hsl(169,78%,7%)",
+   "teal-200": "hsl(170,74%,9%)",
+   "teal-300": "hsl(171,75%,13%)",
+   "teal-400": "hsl(171,85%,13%)",
+   "teal-500": "hsl(172,85%,20%)",
+   "teal-600": "hsl(172,85%,32%)",
+   "teal-700": "hsl(173,80%,36%)",
+   "teal-800": "hsl(173,83%,30%)",
+   "teal-900": "hsl(174,90%,41%)",
+   "teal-1000": "hsl(166,71%,93%)",
+   "purple-100": "hsl(283,30%,12%)",
+   "purple-200": "hsl(281,38%,16%)",
+   "purple-300": "hsl(279,44%,23%)",
+   "purple-400": "hsl(277,46%,28%)",
+   "purple-500": "hsl(274,49%,35%)",
+   "purple-600": "hsl(272,51%,54%)",
+   "purple-700": "hsl(272,51%,54%)",
+   "purple-800": "hsl(272,47%,45%)",
+   "purple-900": "hsl(275,80%,71%)",
+   "purple-1000": "hsl(281,73%,96%)",
+   "pink-100": "hsl(335,32%,12%)",
+   "pink-200": "hsl(335,43%,16%)",
+   "pink-300": "hsl(335,47%,21%)",
+   "pink-400": "hsl(335,51%,22%)",
+   "pink-500": "hsl(335,57%,27%)",
+   "pink-600": "hsl(336,75%,40%)",
+   "pink-700": "hsl(336,80%,58%)",
+   "pink-800": "hsl(336,74%,51%)",
+   "pink-900": "hsl(341,90%,67%)",
+   "pink-1000": "hsl(333,90%,96%)",
+   "gray-alpha-100": "#ffffff0f",
+   "gray-alpha-200": "#ffffff17",
+   "gray-alpha-300": "#ffffff21",
+   "gray-alpha-400": "#ffffff24",
+   "gray-alpha-500": "#ffffff3d",
+   "gray-alpha-600": "#ffffff82",
+   "gray-alpha-700": "#ffffff8a",
+   "gray-alpha-800": "#ffffff78",
+   "gray-alpha-900": "#ffffff9c",
+   "gray-alpha-1000": "#ffffffeb",
+   "background-100": "hsl(0,0%,4%)",
+   "background-200": "hsl(0,0%,0%)"
+  }
+ },
+ "effect": {
+  "light": {
+   "shadow-border-base": "0 0 0 1px #00000014",
+   "shadow-small": "0px 2px 2px #0000000a",
+   "shadow-medium": "0px 2px 2px #0000000a, 0px 8px 8px -8px #0000000a",
+   "shadow-large": "0px 2px 2px #0000000a, 0px 8px 16px -4px #0000000a",
+   "shadow-tooltip": "0 0 0 1px #00000014, 0px 1px 1px #00000005, 0px 4px 8px #0000000a, 0 0 0 1px hsla(0, 0%, 98%, 1)",
+   "shadow-menu": "0 0 0 1px #00000014, 0px 1px 1px #00000005, 0px 4px 8px -4px #0000000a, 0px 16px 24px -8px #0000000f, 0 0 0 1px hsla(0, 0%, 98%, 1)",
+   "shadow-modal": "0 0 0 1px #00000014, 0px 1px 1px #00000005, 0px 8px 16px -4px #0000000a, 0px 24px 32px -8px #0000000f, 0 0 0 1px hsla(0, 0%, 98%, 1)",
+   "focus-ring": "0 0 0 2px hsla(0, 0%, 100%, 1), 0 0 0 4px hsla(212, 100%, 48%, 1)",
+   "focus-color": "hsl(212,100%,48%)",
+   "focus-border": "0 0 0 1px #00000057, 0px 0px 0px 4px #00000029"
+  },
+  "dark": {
+   "shadow-border-base": "0 0 0 1px #ffffff25",
+   "shadow-small": "0px 1px 2px #00000029",
+   "shadow-medium": "0px 2px 2px #00000052, 0px 8px 8px -8px #00000029",
+   "shadow-large": "0px 2px 2px #0000000a, 0px 8px 16px -4px #0000000a",
+   "shadow-tooltip": "0 0 0 1px #ffffff25, 0px 1px 1px #00000005, 0px 4px 8px #0000000a, 0 0 0 1px hsla(0, 0%, 0%, 1)",
+   "shadow-menu": "0 0 0 1px #ffffff25, 0px 1px 1px #00000005, 0px 4px 8px -4px #0000000a, 0px 16px 24px -8px #0000000f, 0 0 0 1px hsla(0, 0%, 0%, 1)",
+   "shadow-modal": "0 0 0 1px #ffffff25, 0px 1px 1px #00000005, 0px 8px 16px -4px #0000000a, 0px 24px 32px -8px #0000000f, 0 0 0 1px hsla(0, 0%, 0%, 1)",
+   "focus-ring": "0 0 0 2px hsla(0, 0%, 4%, 1), 0 0 0 4px hsla(210, 100%, 66%, 1)",
+   "focus-color": "hsl(210,100%,66%)",
+   "focus-border": "0 0 0 1px #ffffff82, 0px 0px 0px 4px #ffffff3d"
+  }
+ },
+ "radius": {
+  "sm": "6px",
+  "md": "12px",
+  "lg": "16px",
+  "full": "9999px"
+ },
+ "space": {
+  "1": "4px",
+  "2": "8px",
+  "3": "12px",
+  "4": "16px",
+  "5": "20px",
+  "6": "24px",
+  "8": "32px",
+  "10": "40px",
+  "12": "48px",
+  "16": "64px"
+ },
+ "typography": {
+  "heading-72": {
+   "size": "72px",
+   "line": "72px",
+   "tracking": "-0.04em",
+   "weight": 600
+  },
+  "heading-64": {
+   "size": "64px",
+   "line": "64px",
+   "tracking": "-0.04em",
+   "weight": 600
+  },
+  "heading-56": {
+   "size": "56px",
+   "line": "56px",
+   "tracking": "-0.04em",
+   "weight": 600
+  },
+  "heading-48": {
+   "size": "48px",
+   "line": "56px",
+   "tracking": "-0.04em",
+   "weight": 600
+  },
+  "heading-40": {
+   "size": "40px",
+   "line": "48px",
+   "tracking": "-0.04em",
+   "weight": 600
+  },
+  "heading-32": {
+   "size": "32px",
+   "line": "40px",
+   "tracking": "-0.02em",
+   "weight": 600
+  },
+  "heading-28": {
+   "size": "28px",
+   "line": "36px",
+   "tracking": "-0.02em",
+   "weight": 600
+  },
+  "heading-24": {
+   "size": "24px",
+   "line": "32px",
+   "tracking": "-0.02em",
+   "weight": 600
+  },
+  "heading-20": {
+   "size": "20px",
+   "line": "28px",
+   "tracking": "-0.02em",
+   "weight": 600
+  },
+  "heading-16": {
+   "size": "16px",
+   "line": "24px",
+   "tracking": "-0.01em",
+   "weight": 600
+  },
+  "heading-14": {
+   "size": "14px",
+   "line": "20px",
+   "tracking": "0",
+   "weight": 600
+  },
+  "copy-16": {
+   "size": "16px",
+   "line": "24px",
+   "tracking": "0",
+   "weight": 400
+  },
+  "copy-14": {
+   "size": "14px",
+   "line": "20px",
+   "tracking": "0",
+   "weight": 400
+  },
+  "copy-13": {
+   "size": "13px",
+   "line": "18px",
+   "tracking": "0",
+   "weight": 400
+  },
+  "label-14": {
+   "size": "14px",
+   "line": "20px",
+   "tracking": "0",
+   "weight": 500
+  },
+  "label-13": {
+   "size": "13px",
+   "line": "16px",
+   "tracking": "0",
+   "weight": 500
+  },
+  "label-12": {
+   "size": "12px",
+   "line": "16px",
+   "tracking": "0",
+   "weight": 500
+  },
+  "button-14": {
+   "size": "14px",
+   "line": "20px",
+   "tracking": "0",
+   "weight": 500
+  },
+  "button-12": {
+   "size": "12px",
+   "line": "16px",
+   "tracking": "0",
+   "weight": 500
+  }
+ },
+ "semantic": {
+  "note": "Sémantika krokov: 100–300 pozadia komponentov (default/hover/active), 400–600 hranice, 700–800 kontrastné pozadia a čiary, 900–1000 text (secondary/primary).",
+  "status": {
+   "ok": "green-800",
+   "ok-text": "green-900",
+   "warn-3": "amber-800",
+   "warn-10": "amber-900",
+   "crit": "red-800",
+   "crit-text": "red-900",
+   "muted": "gray-700"
+  },
+  "series": {
+   "primary": "blue-700",
+   "goal": "gray-1000",
+   "path": "gray-600",
+   "grid": "gray-200",
+   "axis": "gray-700"
+  },
+  "markets": {
+   "SK": {
+    "line": "amber-800",
+    "text": "amber-900"
+   },
+   "CZ": {
+    "line": "teal-700",
+    "text": "teal-900"
+   },
+   "HU": {
+    "line": "purple-700",
+    "text": "purple-900"
+   },
+   "RO": {
+    "line": "red-700",
+    "text": "red-900"
+   }
+  }
+ }
+};
+export const light = tokens.color.light;
+export const dark = tokens.color.dark;
+export default tokens;

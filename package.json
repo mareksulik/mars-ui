@@ -1,0 +1,81 @@
+{
+  "name": "@mareksulik/mars-ui",
+  "version": "1.0.0",
+  "description": "mars-ui — dizajn systém pre reporty, dashboardy a weby. Vizuálne vychádza z Geist (Vercel); fonty Geist Sans/Mono (SIL OFL 1.1). Tokeny, CSS komponenty, vanilla SVG grafy, Tailwind v3/v4 vrstva a React komponenty.",
+  "license": "MIT",
+  "author": "Marek Šulik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mareksulik/mars-ui.git"
+  },
+  "homepage": "https://github.com/mareksulik/mars-ui#readme",
+  "type": "module",
+  "files": [
+    "dist",
+    "templates",
+    "tailwind",
+    "tokens",
+    "DESIGN_SYSTEM.md"
+  ],
+  "main": "./dist/ds.js",
+  "module": "./dist/ds.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ds.esm.js",
+      "require": "./dist/ds.js"
+    },
+    "./css": "./dist/ds.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens": "./dist/tokens.js",
+    "./charts": {
+      "import": "./dist/ds.esm.js",
+      "require": "./dist/ds.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./tailwind": "./tailwind/theme.css",
+    "./tailwind/preset": "./tailwind/preset.cjs",
+    "./fonts/*": "./dist/fonts/*"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "python3 scripts/build.py && tsc -p tsconfig.react.json",
+    "build:css": "python3 scripts/build.py",
+    "build:react": "tsc -p tsconfig.react.json",
+    "check": "python3 scripts/build.py --strict && tsc -p tsconfig.react.json --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "design-system",
+    "geist",
+    "tokens",
+    "css",
+    "react",
+    "tailwind",
+    "charts",
+    "svg"
+  ],
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
+  }
+}
