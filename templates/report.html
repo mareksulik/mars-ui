@@ -62,7 +62,7 @@ if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
 <script>
 // API sample — replace with your data (fetch('data/….json'))
 const UI=window.MarsUI, F=UI.formatters('en-US');
-// four goal rows = the fixed status bands: green = met, lime = within 3 %, orange = within 10 %, red = beyond 10 %
+// four goal rows = the fixed status bands: green = met, teal = within 3 %, amber = within 10 %, red = beyond 10 %
 UI.bulletChart(document.getElementById('bullets'),[
   {label:'REVENUE · EX VAT',val:F.eur(1234567),pct:41.2,ppct:103,big:F.pct(41.2),sub:'projection '+F.eur(3090000)+' ('+F.pct(103)+')',right:'GOAL',rightVal:F.eur(3000000),color:UI.ratioColor(1.03)},
   {label:'PROFIT · ALL ORDERS',val:F.eur(412300),pct:42.5,ppct:98,big:F.pct(42.5),sub:'projection '+F.eur(951000)+' ('+F.pct(98)+')',right:'GOAL',rightVal:F.eur(970000),color:UI.ratioColor(0.98)},

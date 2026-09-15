@@ -25,7 +25,7 @@ Start from `templates/report.html` (topbar + tabs + sections + chart examples) a
 |---|---|---|
 | backgrounds | `--mu-background-100` (cards, topbar), `--mu-background-200` (page) | 100 = surface, 200 = canvas |
 | gray | `--mu-gray-100…1000`, `--mu-gray-alpha-100…1000` | 100–300 component backgrounds (default/hover/active), 400–600 borders (`gray-alpha-400` = the standard 1 px border), 700–800 high-contrast fills and chart axes, 900 secondary text, 1000 primary text |
-| accents | `blue`, `red`, `amber`, `orange`, `lime`, `green`, `teal`, `purple`, `pink` × 100–1000 | 100 badge background, 700–800 lines/bars/buttons, 900 badge text and colored numbers. `orange` and `lime` are mars-ui additions (Geist has neither): they exist for the status bands below |
+| accents | `blue`, `red`, `amber`, `orange`, `lime`, `green`, `teal`, `purple`, `pink` × 100–1000 | 100 badge background, 700–800 lines/bars/buttons, 900 badge text and colored numbers. `orange` and `lime` are mars-ui additions (Geist has neither), available as extra accents; status bands use Geist tokens only |
 | effects | `--mu-shadow-small/medium/large/tooltip/menu/modal`, `--mu-focus-ring` | shadows only on floating elements (menus, modals); cards have none |
 | radius | `--mu-radius-sm` 6 px (buttons, inputs, text badges), `--mu-radius-md` 12 px (cards, tables), `--mu-radius-lg` 16 px, `--mu-radius-full` (pills) | |
 | fonts | `--mu-font-sans` Geist, `--mu-font-mono` Geist Mono | mono = numbers in tables, chart axes, meta rows, badges, code |
@@ -57,13 +57,13 @@ Rules: headings are always Geist Sans, never serif. Numbers compared in a column
 - `lineChart(el, labels, series, opts)` — series `{label,color,values,dash,opacity,width,nodots}`; `opts.goal` draws a black dashed goal line, `opts.yfmt/tfmt` formatters, `opts.xstep`, `opts.wide`. The left margin adapts to the widest axis label.
 - Conventions: **this year solid**, **last year same color dashed `5 4` at opacity .55** (.35 in multi-entity comparisons), **monthly goal black dashed**, **linear path to goal gray dotted `2 4`** (gray-600, width 1). Company-wide series = `blue-700`. Grid `gray-200`, axes `gray-700`.
 - `bulletChart(el, rows, {progress})` — each row: label + value on the left, bar to goal (100 % = vertical black line), big percentage and projection in the middle, target on the right; `progress` draws "TODAY x %".
-- **Status bands — fixed rule** (`ratioColor`, `status`). A small miss is still a shade of green; only from 3 % on it turns warm:
+- **Status bands — fixed rule** (`ratioColor`, `status`). A small miss stays cool (teal); from 3 % on it turns warm:
 
   | deviation from goal (worse direction) | token | color |
   |---|---|---|
   | met (≤ 0 %) | `green-800` | green |
-  | within 3 % | `lime-800` | yellow-green |
-  | within 10 % | `orange-800` | orange |
+  | within 3 % | `teal-800` | teal |
+  | within 10 % | `amber-800` | amber |
   | beyond 10 % | `red-800` | red |
   | no data | `gray-700` | gray |
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5 — 2026-09-15
+
+- Status bands set as the fixed rule: met green-800 · within 3 % teal-800 · within 10 % amber-800 · beyond red-800 (all Geist tokens). `lime`/`orange` stay as optional accents.
+
 ## 1.0.4 — 2026-09-15
 
 - New `lime` scale. Status bands restored to the original rule: met green-800 · within 3 % lime-800 (yellow-green) · within 10 % orange-800 · beyond red-800. Documented as a fixed rule.
