@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6 — 2026-09-15
+
+- `ratioColor`: 0.05 % tolerance so a value exactly at the goal/cap (rounding) stays green.
+
 ## 1.0.5 — 2026-09-15
 
 - Status bands set as the fixed rule: met green-800 · within 3 % teal-800 · within 10 % amber-800 · beyond red-800 (all Geist tokens). `lime`/`orange` stay as optional accents.

@@ -30,7 +30,7 @@ function createMarsUI(){
   function ratioColor(ratio, lowerIsBetter=false){
     if(ratio==null||!isFinite(ratio)) return status.muted();
     const r=lowerIsBetter?ratio:1/ratio;
-    return r<=1?status.ok():(r<=1.03?status.warn3():(r<=1.10?status.warn10():status.crit()));
+    return r<=1.0005?status.ok():(r<=1.03?status.warn3():(r<=1.10?status.warn10():status.crit()));  // 0,05 % tolerance for rounding (100 % of cap is green)
   }
 
   /** Line chart. labels: x axis; series: [{label,color,values,dash,opacity,width,nodots}];
@@ -118,7 +118,7 @@ function createMarsUI(){
     return badge(labels.crit,'crit');
   }
 
-  return { version:'1.0.5', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
+  return { version:'1.0.6', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
 }
 
 return createMarsUI();
