@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 2026-10-05
+
+Typography and lists get fixed rules (DESIGN_SYSTEM.md §3).
+
+- **Fonts by role:** Geist Sans for all language, Geist Mono only for values (`td.num`, `.stat .value`, chart ticks and values) and code/identifiers. Serif is never used. Switched to sans: `th`, `.sec-num`, `.stat .label`, `.meta-row`, `.chip` (new `.chip-mono` for codes), `dl.spec dt`, chart series names and annotations.
+- **One size scale:** 12, 13, 14, 15, 16, 18, 22, 28, 32 px. Removed 12.5 / 13.5 / 21 px; field hints 12 → 13, notes and `dl.spec` 14 → 15, field labels 13 → 14, chart ticks 13 → 12.
+- **Lists:** `ul`/`ol` indented 24 px (markers no longer hang outside cards), 8 px between items, gray markers, tabular numbers; `.plain` lists; last child of cards has no bottom margin.
+- New role utilities `.text-body`, `.text-small`, `.text-label`, `.num`; inline mono is 0.93 em.
+- Charts: bold values 700 → 600 (Geist Mono), `svg text.v` marks mono values.
+
 ## 1.1.0 — 2026-09-15
 
 - New components: `footer.site`, `nav a.right` (right-aligned tab), methodology-page set (`dl.spec`, `.formula`, `.cell`, `.src`, `figure.shot` with `.cap`, `.metric`, `.band`).

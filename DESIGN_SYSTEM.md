@@ -28,32 +28,72 @@ Start from `templates/report.html` (topbar + tabs + sections + chart examples) a
 | accents | `blue`, `red`, `amber`, `orange`, `lime`, `green`, `teal`, `purple`, `pink` × 100–1000 | 100 badge background, 700–800 lines/bars/buttons, 900 badge text and colored numbers. `orange` and `lime` are mars-ui additions (Geist has neither), available as extra accents; status bands use Geist tokens only |
 | effects | `--mu-shadow-small/medium/large/tooltip/menu/modal`, `--mu-focus-ring` | shadows only on floating elements (menus, modals); cards have none |
 | radius | `--mu-radius-sm` 6 px (buttons, inputs, text badges), `--mu-radius-md` 12 px (cards, tables), `--mu-radius-lg` 16 px, `--mu-radius-full` (pills) | |
-| fonts | `--mu-font-sans` Geist, `--mu-font-mono` Geist Mono | mono = numbers in tables, chart axes, meta rows, badges, code |
+| fonts | `--mu-font-sans` Geist, `--mu-font-mono` Geist Mono | sans = all language, mono = values and code only, serif = never (§3) |
 | spacing | `--mu-space-1…16` (4 px steps) | |
 
 The source of truth is `tokens/tokens.json`; `python3 scripts/build.py` generates CSS, JS and Tailwind. Never edit values in `dist/`.
 
-## 3. Typography
+## 3. Typography — fixed roles
 
-Scale classes (`dist/typography.css`): `.heading-72 … .heading-14` (weight 600, tracking −0.04 to −0.01 em), `.copy-16/14/13` (400), `.label-14/13/12` (500), `.button-14/12`. Add `.mono` for Geist Mono. Base elements: `h1` 32/40, `h2` 28/36, `h3` 22/30, `body` 15/1.5.
+Every piece of text has exactly one role. The role decides font, size, weight and case; nothing else does. If text does not fit a role, it is the wrong text, not a reason for a new size.
 
-Rules: headings are always Geist Sans, never serif. Numbers compared in a column go mono. Chart subtitles (`.fig-sub`) are 13 px gray-900. Sections carry a mono uppercase number (`.sec-num`, "01 — OVERVIEW") and an `h2`.
+**Which font**
+
+| Font | Use for | Never for |
+|---|---|---|
+| **Geist Sans** | everything that is language: headings, body, list items, table headers, labels, eyebrows, badges, buttons, tabs, captions, chart series names and annotations | — |
+| **Geist Mono** | **values** the reader compares or copies: numbers in table cells (`td.num`), KPI values (`.stat .value`), chart axis ticks and value labels (`svg text.v`); **code and identifiers**: `code`, `.formula`, `.cell`, `.src`, API fields, file paths, IDs | words and sentences, labels, headers, badges, list numbers, section numbers, captions under images |
+| **Serif** | nothing | everything — mars-ui has no serif |
+
+Test for mono: *would the reader line it up with other values or paste it somewhere?* Yes → mono. Otherwise sans. Ordinals and indexes (`01 — Zhrnutie`, list markers, step numbers) are structure, not values → sans with `tabular-nums`.
+
+**The roles (the only sizes in the system)**
+
+| Role | Font · size / line · weight | Elements |
+|---|---|---|
+| Page title | sans 32/40 · 600 · −0.02em | `h1` |
+| Section title | sans 28/36 · 600 · −0.02em | `h2` |
+| Subsection | sans 22/30 · 600 · −0.02em | `h3` |
+| Card title | sans 18/26 · 600 · −0.01em | `figcaption`, `.card-title` |
+| Minor heading | sans 16/24 · 600 · −0.01em | `h4` |
+| Body | sans 15/24 · 400 | `p`, `li`, `td`, `dd`, `.note`, `.text-body` |
+| Small | sans 13/18 · 400 | `.fig-sub`, `.legend`, `.stat .delta`, `.shot .cap`, `.hint`, footer, `.text-small`, chart series names and annotations |
+| Label | sans 12/16 · 500 · uppercase · 0.06em | `.sec-num`, `th`, `.stat .label`, `.meta-row`, `dl.spec dt`, `.text-label` |
+| Control | sans 14/20 · 500 (13 small, 16 large) | tabs, `.btn`, `.input`, `.field label`, topbar app name |
+| Badge | sans 12/20 · 500 · pill | `.chip` (`.chip-mono` only for a code inside) |
+| Value | mono 14 in tables, 28/36 · 600 KPI, 22 · 600 bullet chart percent, 16 · 600 bullet chart values, 12 axis ticks | `td.num`, `.stat .value`, `svg text.v`, `.num` |
+| Code | mono 14/20 block, 0.93 em inline | `pre`, `.formula`, `code`, `.cell`, `.src`, `kbd` |
+
+Rules:
+- Allowed sizes are 12, 13, 14, 15, 16, 18, 22, 28, 32 px (plus `.heading-40…72` for landing pages only). No half pixels, no 10 or 11 px text.
+- Inline mono inside sans text is one step smaller (`0.93em`: 15 → 14, 13 → 12) so it does not look bolder than its sentence.
+- Hierarchy comes from role, not from bold: inside running text only `strong` (600) for a lead-in phrase; never bold a whole paragraph.
+- All numbers use `tabular-nums`; columns of numbers are right-aligned (`.num`).
+- `.text-body`, `.text-small`, `.text-label`, `.num` apply a role to any element. The scale classes `.heading-*`, `.copy-*`, `.label-*`, `.button-*` (`dist/typography.css`) stay for compatibility; `.mono` on them is allowed only for values.
+
+**Lists**
+
+- `ul` / `ol` are indented 24 px with 4 px between marker and text, so markers stay inside cards. Items are 8 px apart (4 px inside `.text-small`), nested lists start 8 px below their parent item.
+- Bullet markers `gray-700`, numbers `gray-900` · 500 · tabular, both in sans. List text is Body (or Small inside `.text-small`).
+- A lead-in phrase in an item is `strong` followed by the sentence: `<li><strong>Žiadne video.</strong> Všetkých 12…</li>`.
+- `ul.plain` / `ol.plain` remove markers and indent (for lists that are really stacks of cards or links).
+- The last child of a `.card`, `figure` or `.note` has no bottom margin.
 
 ## 4. Components (CSS classes are the API)
 
 - **Topbar** `header.topbar > .wrap > .brand (logo svg | .slash | .app) + .meta-row` — inline SVG logo with `fill="currentColor"`, 22 px tall.
 - **Tabs** `nav > .wrap > a(.active)` — 14 px, active tab has a 2 px black underline, sticky.
-- **Card / figure** `.card` or `<figure><figcaption>…<div class="fig-sub">…` — white, 1 px `gray-alpha-400`, radius 12, padding 20.
-- **Stat** `.stat > .label + .value (+ .delta.pos/.neg)` — mono 28 px value.
-- **Table** `.tbl-scroll > table(.grouped)` — `th` mono uppercase 13 px on `background-200`, `td.num` mono right-aligned, `tr.grp th` group header row (e.g. REVENUE / PROFIT / SPEND), `.gs` left divider on the first column of a group, `tr.hl` highlighted row, `.pos/.neg` green/red text 500. Prefer triplets (actual · target · attainment) over flat 15-column tables.
-- **Badge** `.chip.chip-{ok|warn|crit|info|neutral|purple|teal|pink|brand|inverted}` — mono 12 px pill, background 100 / text 900. ok = met, warn = attention, crit = problem, info = running/active, neutral = plan/inactive.
+- **Card / figure** `.card` or `<figure><figcaption>…<div class="fig-sub">…` — white, 1 px `gray-alpha-400`, radius 12, padding 20. Title = Card title role, `.fig-sub` = Small.
+- **Stat** `.stat > .label + .value (+ .delta.pos/.neg)` — sans Label, mono 28 px value, Small delta.
+- **Table** `.tbl-scroll > table(.grouped)` — `th` sans Label on `background-200`, text cells sans Body, `td.num` mono 14 right-aligned, `tr.grp th` group header row (e.g. REVENUE / PROFIT / SPEND), `.gs` left divider on the first column of a group, `tr.hl` highlighted row, `.pos/.neg` green/red text 500. Prefer triplets (actual · target · attainment) over flat 15-column tables.
+- **Badge** `.chip.chip-{ok|warn|crit|info|neutral|purple|teal|pink|brand|inverted}` — sans 12 px pill (`.chip-mono` only for a code), background 100 / text 900. ok = met, warn = attention, crit = problem, info = running/active, neutral = plan/inactive.
 - **Button** `.btn.btn-{primary|secondary|tertiary|error|brand}(.btn-sm|.btn-lg|.btn-block)` — primary is black, 40 px, radius 6.
 - **Input** `.input(.input-mono)`, `.field > label + .input + .hint/.error`.
 - **Legend** `.legend > span > .sw` (+ `.sw-dashed` last year, `.sw-dotted` path to goal, `.sw-goal` goal).
 - **Note** `.note(.note-warn|.note-error|.note-ok)`.
 - **Footer** `footer.site` — copyright left, note right, 13 px gray-900.
 - **Tabs, right-aligned item** `nav a.right` (e.g. a "Legend" link).
-- **Methodology page** (legend / definitions for clients): `dl.spec` (mono term · description), `.formula` (mono block), `.cell` (spreadsheet cell reference pill, e.g. AG5), `.src` (API field name), `figure.shot > img + .cap` (annotated screenshot with caption), `.metric` (definition card), `.band` (color swatch).
+- **Methodology page** (legend / definitions for clients): `dl.spec` (sans Label term · Body description), `.formula` (mono block), `.cell` (spreadsheet cell reference pill, e.g. AG5), `.src` (API field name), `figure.shot > img + .cap` (annotated screenshot with caption), `.metric` (definition card), `.band` (color swatch).
 
 ## 5. Charts (`dist/ds.js` → `MarsUI`)
 

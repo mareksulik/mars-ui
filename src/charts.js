@@ -49,8 +49,8 @@ function createMarsUI(){
     let g='';
     for(let k=0;k<=4;k++){const v=ymin+(ymax-ymin)*k/4;
       g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${grid}" stroke-width="1"/>`;
-      g+=`<text x="${L-6}" y="${y(v)+3.5}" text-anchor="end" font-size="13" fill="${axis}">${yLabels[k]}</text>`;}
-    labels.forEach((m,i)=>{if(i%step===0||i===n-1)g+=`<text x="${x(i)}" y="${H-6}" text-anchor="middle" font-size="13" fill="${axis}">${m}</text>`;});
+      g+=`<text x="${L-6}" y="${y(v)+3.5}" class="v" text-anchor="end" font-size="12" fill="${axis}">${yLabels[k]}</text>`;}
+    labels.forEach((m,i)=>{if(i%step===0||i===n-1)g+=`<text x="${x(i)}" y="${H-6}" class="v" text-anchor="middle" font-size="12" fill="${axis}">${m}</text>`;});
     if(opts.goal!=null){g+=`<line x1="${L}" x2="${W-R}" y1="${y(opts.goal)}" y2="${y(opts.goal)}" stroke="${goalC}" stroke-dasharray="4 3" stroke-width="1.2"/><text x="${W-R-2}" y="${y(opts.goal)-5}" text-anchor="end" font-size="13" fill="${goalC}">${opts.goalLabel||LBL.goal} ${opts.yfmt?opts.yfmt(opts.goal):opts.goal}</text>`;}
     if(opts.refline!=null){g+=`<line x1="${L}" x2="${W-R}" y1="${y(opts.refline)}" y2="${y(opts.refline)}" stroke="${goalC}" stroke-width="1.2" opacity=".6"/>`;}
     series.forEach(s=>{
@@ -60,7 +60,7 @@ function createMarsUI(){
       g+=`<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="${s.width||2}" stroke-linejoin="round"${s.dash?` stroke-dasharray="${s.dash}"`:''}${op}/>`;
       if(!s.nodots) vals.forEach(([v,i])=>{g+=`<circle cx="${x(i)}" cy="${y(v)}" r="2.6" fill="${s.color}" stroke="${token('background-100')}" stroke-width="1.2"${s.opacity!=null?` fill-opacity="${s.opacity}"`:''}><title>${s.label} · ${labels[i]}: ${opts.tfmt?opts.tfmt(v):v}</title></circle>`;});
       if(vals.length&&s.label){const [lv,li]=vals[vals.length-1];
-        g+=`<text x="${x(li)+6}" y="${y(lv)+3.5}" font-size="12.5" fill="${s.color}"${op}>${s.label}</text>`;}
+        g+=`<text x="${x(li)+6}" y="${y(lv)+3.5}" font-size="13" fill="${s.color}"${op}>${s.label}</text>`;}
     });
     el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;overflow:visible" role="img">${g}</svg>`;
   }
@@ -74,20 +74,20 @@ function createMarsUI(){
     const xg=X(100), prog=opts.progress, noData=!!opts.noData;
     const dark=token('gray-1000'), mid=token('gray-900'), light=token('gray-700'), track=token('gray-200');
     let g=`<line x1="${xg}" x2="${xg}" y1="${TOP-12}" y2="${H-10}" stroke="${dark}" stroke-width="1.8" opacity=".55"/>`+
-          `<text x="${xg}" y="${TOP-18}" text-anchor="middle" font-size="13.5" fill="${dark}">${opts.goalLabel||LBL.goal100}</text>`;
+          `<text x="${xg}" y="${TOP-18}" text-anchor="middle" font-size="13" fill="${dark}">${opts.goalLabel||LBL.goal100}</text>`;
     if(prog!=null&&Math.abs(prog-100)>=3){const xd=X(prog);
       g+=`<line x1="${xd}" x2="${xd}" y1="${TOP-12}" y2="${H-10}" stroke="${light}" stroke-width="1.5" stroke-dasharray="3 3"/>`+
-         `<text x="${xd}" y="${H+4}" text-anchor="middle" font-size="13.5" fill="${dark}">${opts.todayLabel||LBL.today} ${opts.progressLabel||(Math.round(prog*10)/10+' %')}</text>`;}
+         `<text x="${xd}" y="${H+4}" text-anchor="middle" font-size="13" fill="${dark}">${opts.todayLabel||LBL.today} ${opts.progressLabel||(Math.round(prog*10)/10+' %')}</text>`;}
     rows.forEach((r,i)=>{const y=TOP+i*RH+6; const c=r.color||status.muted();
-      g+=`<text x="0" y="${y+2}" font-size="13.5" fill="${light}">${r.label}</text>`+
-         `<text x="0" y="${y+21}" font-size="16" font-weight="700" fill="${c}">${r.val}</text>`+
+      g+=`<text x="0" y="${y+2}" font-size="13" fill="${light}">${r.label}</text>`+
+         `<text x="0" y="${y+21}" class="v" font-size="16" font-weight="600" fill="${c}">${r.val}</text>`+
          `<rect x="${x0}" y="${y}" width="${xg-x0}" height="${BH}" rx="6" fill="${track}"/>`;
       if((r.ppct||0)>(r.pct||0)+0.5) g+=`<rect x="${Math.max(x0,X(r.pct)-6)}" y="${y}" width="${X(r.ppct)-X(r.pct)+6}" height="${BH}" rx="6" fill="${c}" opacity=".25"/>`;
       g+=`<rect x="${x0}" y="${y}" width="${Math.max(8,X(r.pct)-x0)}" height="${BH}" rx="6" fill="${c}"><title>${r.label}: ${r.val} vs ${r.rightVal}</title></rect>`+
-         `<text x="${(x0+x1)/2}" y="${y+BH+27}" text-anchor="middle" font-size="21" font-weight="700" fill="${c}">${noData?'—':r.big}</text>`+
-         `<text x="${(x0+x1)/2}" y="${y+BH+45}" text-anchor="middle" font-size="13.5" fill="${mid}">${noData?(opts.emptyText||LBL.empty):r.sub}</text>`+
-         `<text x="${x1+16}" y="${y+2}" font-size="13.5" fill="${light}">${r.right}</text>`+
-         `<text x="${x1+16}" y="${y+21}" font-size="16" font-weight="700" fill="${dark}">${r.rightVal}</text>`;
+         `<text x="${(x0+x1)/2}" y="${y+BH+27}" text-anchor="middle" class="v" font-size="22" font-weight="600" fill="${c}">${noData?'—':r.big}</text>`+
+         `<text x="${(x0+x1)/2}" y="${y+BH+45}" text-anchor="middle" font-size="13" fill="${mid}">${noData?(opts.emptyText||LBL.empty):r.sub}</text>`+
+         `<text x="${x1+16}" y="${y+2}" font-size="13" fill="${light}">${r.right}</text>`+
+         `<text x="${x1+16}" y="${y+21}" class="v" font-size="16" font-weight="600" fill="${dark}">${r.rightVal}</text>`;
     });
     el.innerHTML=`<svg viewBox="0 0 ${W} ${H+10}" style="width:100%;height:auto;overflow:visible" role="img">${g}</svg>`;
   }
@@ -116,5 +116,5 @@ function createMarsUI(){
     return badge(labels.crit,'crit');
   }
 
-  return { version:'1.1.0', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
+  return { version:'1.2.0', token, status, labels:LBL, setLabels, ratioColor, formatters, lineChart, bulletChart, table, badge, yoyChip, paceChip };
 }
