@@ -7,8 +7,9 @@ const cx = (...a: Array<string | false | null | undefined>) => a.filter(Boolean)
 
 export type Tone = "ok" | "warn" | "crit" | "info" | "neutral" | "purple" | "teal" | "pink" | "brand" | "inverted";
 
-export function Badge({ tone = "neutral", sans, className, children, ...rest }: React.HTMLAttributes<HTMLSpanElement> & { tone?: Tone; sans?: boolean }) {
-  return <span className={cx("chip", `chip-${tone}`, sans && "chip-sans", className)} {...rest}>{children}</span>;
+/** Badge — sans by default; `mono` only when the content is a code or ID. `sans` is kept for compatibility (no-op since 1.2.0). */
+export function Badge({ tone = "neutral", sans, mono, className, children, ...rest }: React.HTMLAttributes<HTMLSpanElement> & { tone?: Tone; sans?: boolean; mono?: boolean }) {
+  return <span className={cx("chip", `chip-${tone}`, sans && "chip-sans", mono && "chip-mono", className)} {...rest}>{children}</span>;
 }
 
 export function Button({ variant = "secondary", size, block, className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" | "tertiary" | "error" | "brand"; size?: "sm" | "lg"; block?: boolean }) {

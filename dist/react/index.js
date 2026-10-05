@@ -1,7 +1,8 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 const cx = (...a) => a.filter(Boolean).join(" ");
-export function Badge({ tone = "neutral", sans, className, children, ...rest }) {
-    return _jsx("span", { className: cx("chip", `chip-${tone}`, sans && "chip-sans", className), ...rest, children: children });
+/** Badge — sans by default; `mono` only when the content is a code or ID. `sans` is kept for compatibility (no-op since 1.2.0). */
+export function Badge({ tone = "neutral", sans, mono, className, children, ...rest }) {
+    return _jsx("span", { className: cx("chip", `chip-${tone}`, sans && "chip-sans", mono && "chip-mono", className), ...rest, children: children });
 }
 export function Button({ variant = "secondary", size, block, className, ...rest }) {
     return _jsx("button", { className: cx("btn", `btn-${variant}`, size && `btn-${size}`, block && "btn-block", className), ...rest });

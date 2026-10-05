@@ -86,7 +86,7 @@ Rules:
 - **Card / figure** `.card` or `<figure><figcaption>…<div class="fig-sub">…` — white, 1 px `gray-alpha-400`, radius 12, padding 20. Title = Card title role, `.fig-sub` = Small.
 - **Stat** `.stat > .label + .value (+ .delta.pos/.neg)` — sans Label, mono 28 px value, Small delta.
 - **Table** `.tbl-scroll > table(.grouped)` — `th` sans Label on `background-200`, text cells sans Body, `td.num` mono 14 right-aligned, `tr.grp th` group header row (e.g. REVENUE / PROFIT / SPEND), `.gs` left divider on the first column of a group, `tr.hl` highlighted row, `.pos/.neg` green/red text 500. Prefer triplets (actual · target · attainment) over flat 15-column tables.
-- **Badge** `.chip.chip-{ok|warn|crit|info|neutral|purple|teal|pink|brand|inverted}` — sans 12 px pill (`.chip-mono` only for a code), background 100 / text 900. ok = met, warn = attention, crit = problem, info = running/active, neutral = plan/inactive.
+- **Badge** `.chip.chip-{ok|warn|crit|info|neutral|purple|teal|pink|brand|inverted}` — sans 12 px pill (`.chip-mono` / React `mono` only for a code or ID), background 100 / text 900. ok = met, warn = attention, crit = problem, info = running/active, neutral = plan/inactive.
 - **Button** `.btn.btn-{primary|secondary|tertiary|error|brand}(.btn-sm|.btn-lg|.btn-block)` — primary is black, 40 px, radius 6.
 - **Input** `.input(.input-mono)`, `.field > label + .input + .hint/.error`.
 - **Legend** `.legend > span > .sw` (+ `.sw-dashed` last year, `.sw-dotted` path to goal, `.sw-goal` goal).

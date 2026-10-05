@@ -1,9 +1,11 @@
 import * as React from "react";
 type Div = React.HTMLAttributes<HTMLDivElement>;
 export type Tone = "ok" | "warn" | "crit" | "info" | "neutral" | "purple" | "teal" | "pink" | "brand" | "inverted";
-export declare function Badge({ tone, sans, className, children, ...rest }: React.HTMLAttributes<HTMLSpanElement> & {
+/** Badge — sans by default; `mono` only when the content is a code or ID. `sans` is kept for compatibility (no-op since 1.2.0). */
+export declare function Badge({ tone, sans, mono, className, children, ...rest }: React.HTMLAttributes<HTMLSpanElement> & {
     tone?: Tone;
     sans?: boolean;
+    mono?: boolean;
 }): React.JSX.Element;
 export declare function Button({ variant, size, block, className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: "primary" | "secondary" | "tertiary" | "error" | "brand";
